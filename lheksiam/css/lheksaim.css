@@ -1,0 +1,48 @@
+#bg {
+	background-color:#696969;
+}
+.sidebar{
+	margin-top: 50px;
+	margin-left: -15px;
+}
+#left-menu{
+	width: 199px;
+	height: 100%;
+	float: left;
+	position: fixed;
+
+}
+.sty-panel{
+	border-color: #4682B4;
+	
+}
+.headingOne{
+	background: #4682B4;
+
+}
+.sty-panelnav{
+	background: #B0C4DE;
+}
+.content-panel
+{
+    
+	margin-left: 325px;
+
+}
+.main-content{
+	top: 0px;
+	float: left;
+	margin-top: 50px;
+	
+
+
+}
+.panel-head-main{
+	text-align: center;
+}
+.tabel-head{
+	width: 130px; 
+	text-align: center;
+}
+
+
