@@ -32,6 +32,8 @@ if ($invno && $rec_date && $sup_id && $li_plate) {
 
 	if ($_REQUEST['product1'] && $_REQUEST['Quantity1'] && $_REQUEST['warehouse1'] && $_REQUEST['Weight1'] && $_REQUEST['zone1'])
 	{
+		// $sqlcheck="SELECT * FROM `stock` Where WAREHOUSE_ID = '".$_REQUEST['Weight1']."' AND ZONE = '".$_REQUEST['zone1']."' AND PRODUCT_ID = '".$_REQUEST['product1']."' ";
+		// $resqlcheck = mysql_query($sqlcheck);
 
 		$sql = "INSERT INTO stock_import " ;
 		$sql = $sql." (RECIVE_NO,RECEIVE_DATE,PRODUCT_ID,SUPPLIER_ID,WAREHOUSE_ID,ZONE,CARRIER,QTY,TOTAL_WEIGHT,STATUS,REMARK) " ;

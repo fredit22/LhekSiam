@@ -1,4 +1,4 @@
-  <?php
+﻿  <?php
 
  
   error_reporting(~E_NOTICE);
@@ -22,7 +22,7 @@ $query = mysql_query($chk);
 if(mysql_num_rows($query) != 0)
 {
   echo "<script>";
-  echo "alert('ID Dup!!!');";
+  echo "alert('ID Duplicate!!!');";
   echo "history.back();";
   echo "</script>";
 }

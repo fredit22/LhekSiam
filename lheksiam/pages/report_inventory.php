@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
-<?php include("../connect_db.php"); 
-?>
+<?php include("../connect_db.php"); ?>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Set Customer | Leksiam</title>
+    <title>Product Master | Leksiam</title>
+
+    <style>
+      #td1{
+            width:100px;
+            border:solid 1px red;
+          }
+ #div-text{
+            width:100%;
+            width:inherit !important; /* hack firefox , chrome ,safari*/
+            overflow:hidden
+          }
+</style>
 
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
@@ -14,6 +25,13 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- DataTable Css -->
+    <link href="../assets/css/datatable/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- Bootstrap Core Css -->
     <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -24,12 +42,23 @@
     <!-- Animation Css -->
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
 
+    <!-- search-bar Css -->
+    <link href="../css/search_bar.css" rel="stylesheet" />
+
+    <!-- fas fa-cog Css -->
+    <!--<link rel="stylesheet" href="..css/fa-solid.css" charset="utf-8">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- fontawesome Css -->
+    <link rel="stylesheet" href="../css/fontawesome.css" charset="utf-8">
+
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
+
 <body class="theme-red">
 
 
@@ -69,15 +98,14 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" >Welcome To | Leksiam</a>
+                <a class="navbar-brand" href="widgets/../../index.html">Welcome To | Leksiam</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
-
-                   
+                 
                     <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
                 </ul>
             </div>
@@ -87,22 +115,14 @@
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-                       <!-- User Info -->
-          
-            <!-- #User Info -->
-            <!-- Menu -->
 
-          <?php 
-            $resultpage = "export";
-            include("../menu_01.php"); 
+        <?php 
+        $resultpage = "report";
+        include("../menu_01.php"); 
 
-          ?>
-            <!-- #Menu -->
-
-
+        ?>
         </aside>
-        <!-- #END# Right Sidebar -->
-
+        <!-- #END# Left Sidebar -->
         <!-- Right Sidebar -->
         <aside id="rightsidebar" class="right-sidebar">
             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -253,156 +273,44 @@
             <!-- Body Copy -->
         <div class="header">
             <h2>
-                STOCK EXPORT
+                Report Inventory
 
             </h2> <br>
         </div>
-        <form method="post" action="../pages/update/stock_import_accept.php">
-
-
-        <table>
-            <tr>
-                
-                <td><label>Shipping Day :</label><br></td>
-                <td><input type="text" name="invno" id="invno" class="form-control"/><br></td>
-
-
-            </tr>
-
-            <tr>
-                <td><label> Shipping Order :&nbsp;&nbsp;</label><br></td>
-                <td><input type="text" name="invno" id="invno" class="form-control"/><br></td>
-                <td colspan="2" align="right"><label> Customer Name :&nbsp;&nbsp;</label><br></td>
-                <td><input type="text" name="invno" id="invno" class="form-control"/><br></td>
-            </tr>
-
-           <tr>
-                <td><label> Search Order ID:&nbsp;&nbsp;</label><br></td>
-                <td><input type="text" name="invno" id="invno" class="form-control" style="width: 200px" /><br></td>
-                <td><button type="button" class="btn btn-link"><span class="glyphicon glyphicon-search"></span></button>
-                </td>
-
-                </td>
-                
-
-                <td><label> Search Order Name:&nbsp;&nbsp;</label><br></td>
-                <td><input type="text" name="invno" id="invno" class="form-control" style="width: 250px" /><br></td>
-                <td><button type="button" class="btn btn-link"><span class="glyphicon glyphicon-search"></span></button>
-                </td>
-           </tr>
-
-        </table>
-
-            <!-- #END# Body Copy -->
-        </div><br>
-
-         <table class="table table-bordered" >
+        <div class="row">
+          <div class="col-lg-12">
+                  <div class="panel-body">
                       <div class="row">
-                        <tr class="success" >
-                            
-                            <div class="col-sm-1">
-                                <th class="tabel-head">Req No</th>
-                            </div>
-                            <div class="col-sm-4" >
-                                <th class="tabel-head" style="text-align: center;">Product Code</th>
-                            </div>
-                            <div class="col-sm-1">
-                                <th class="tabel-head">Product Name</th>
-                            </div>
-                            <div class="col-sm-1">
-                                <th class="tabel-head" style="text-align: center;">Quantity</th>
-                            </div>
-                            <div class="col-sm-1">
-                                <th class="tabel-head" style="text-align: center;">Weight</th>
-                            </div>
-                            <div class="col-sm-2">
-                                <th class="tabel-head" style="text-align: center;">Warehouse</th>
-                            </div>
-                            <div class="col-sm-2">
-                                <th class="tabel-head" style="text-align: center;">Status</th>
-                            </div>
-                            <div class="col-sm-1">
-                                <th class="tabel-head" style="text-align: center;">Customer Name</th>
-                            </div>
-                            <div class="col-sm-2">
-                                <th class="tabel-head" style="text-align: center;">Remark</th>
-                            </div>
-                        </tr>
-                    </div>
+                        <form action="inventory_detail.php" method="post">
+                           
+                    <!--============================================= End Show Date =============================================-->
+                          <header>
+                            <h3 align="center">Inventory Report</h3>
+                          </header>
+                          <br>
 
-                    <tr>
-
-                            <div class="col-sm-3">
-                                <td><input class="form-control" style="width: 100px"></td>
+                            <div class="container">
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <span class="input-group-addon">Search</span>
+                                  <input type="text" name="inventory_txt" id="inventory_txt" placeholder="  Search  By  Reccipt No.  |  Product Name . . .  " class="form-control"/>
+                                </div>
+                              </div>
+                              <br>
+                              <div id="result"></div>
                             </div>
-                            <div class="col-sm-3">
-                                <td><label style="width: 100px;">so.09422</label></td>
-                            </div>
-                            <div class="col-sm-1">
-                                <td><label style="width: 100px;">SK0162355852</label></td>
-                            </div>
-                            <div class="col-sm-1">
-                                <td><input class="form-control" style="width: 50px;"></td>
-                            </div>
-                            <div class="col-sm-1">
-                                <td><input class="form-control" style="width: 50px;"></td>
-                            </div>
-                            <div class="col-sm-2">
-                                <td><input class="form-control" style="width: 70px;"></td>
-                            </div>
-                            <div class="col-sm-2">
-                                <td><input class="form-control"></td>
-                            </div>
-                            <div class="col-sm-1">
-                                <td><label style="width: 150px;">Yingkou</td>
-                            </div>
-                            <div class="col-sm-2">
-                                <td><input class="form-control"></td>
-                            </div>
-                    </tr>
-                                        <tr>
-
-                            <div class="col-sm-3">
-                                <td><input class="form-control" style="width: 100px"></td>
-                            </div>
-                            <div class="col-sm-3">
-                                <td><label style="width: 100px;">so.0936</label></td>
-                            </div>
-                            <div class="col-sm-1">
-                                <td><label style="width: 100px;">SK025489855</label></td>
-                            </div>
-                            <div class="col-sm-1">
-                                <td><input class="form-control" style="width: 50px;"></td>
-                            </div>
-                            <div class="col-sm-1">
-                                <td><input class="form-control" style="width: 50px;"></td>
-                            </div>
-                            <div class="col-sm-2">
-                                <td><input class="form-control" style="width: 70px;"></td>
-                            </div>
-                            <div class="col-sm-2">
-                                <td><input class="form-control"></td>
-                            </div>
-                            <div class="col-sm-1">
-                                <td><label style="width: 150px;">บริษัท โลหะไพศาลวานิช</td>
-                            </div>
-                            <div class="col-sm-2">
-                                <td><input class="form-control"></td>
-                            </div>
-                    </tr>
-        </table>
-                   
-    <br><center>
-    <button class="btn btn-sm btn-primary" onclick='location.replace("set_warehouse.php")' >
-        Inquiry
-    </button>
-    <button class="btn btn-sm btn-success" type="submit" onClick="Asubmit(this.form);">
-        Submit
-    </button>
-
-</center><br>
-</form>
-    </section>
+                            <center>
+                              <button type="submit" name="report01"class="btn btn-sm btn-primary" onclick="report_submit(this.value);">Submit</button>
+                            </center>
+                            <tr>
+                            </tr>
+                        </form>
+                      </div>
+                      <!-- /.row (nested) -->
+                  </div>
+                  <!-- /.panel-body -->
+              </div>
+              <!-- /.panel -->
 
 
     <!-- Jquery Core Js -->
@@ -425,44 +333,48 @@
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
-        <!-- Page Loader -->            
+
+    <!-- DataTable Js -->
+    <script src="../assets/js/datatable/dataTables.bootstrap.js"></script>
+
+    <!-- Js DataTable Js -->
+    <script src="../assets/js/datatable/jquery.dataTables.js"></script>
+
+        <!-- Page Loader -->
     <script type="text/javascript">
 
-    function Asubmit(frm)
+
+    function report_submit(frm)
     {
-    frm.action="../pages/update/stock_import_accept.php";
+    frm.action="../pages/inventory_detail.php";
     frm.submit();
     }
 
     </script>
 
-    <script>
-
-    $(function () {
-    $('form').bind('submit', function () {
-    $.ajax({
-      type: 'post',
-      url: '../pages/update/customer_accept.php', 
-      data: $('form').serialize(),
-      success: function(data) {
-
-          var CUSTOMER_ID = $("#ID").val();
-          var CUSTOMER_NAME = $("#name").val();
-      $('#customer').append('<option value="'+CUSTOMER_ID+'" selected="selected">'+CUSTOMER_NAME+'</option>');
-
-      //alert('<option value="'+CUSTOMER_ID+'" selected="selected">'+CUSTOMER_NAME+'</option>');
-      //alert(CUSTOMER_NAME);
-      }
-
-    });
-    return false;
-
-    });
-
-}); 
-
-    </script>         
- 
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#inventory_txt').keyup(function(){
+          var txt = $(this).val();
+          var date = $(this).val();
+          if (txt !='') {
+            $.ajax({
+              url:"getreport.php",
+              method:"post",
+              data:{search:txt},
+              dataType:"text",
+              success:function(data)
+              {
+                $('#result').html(data);
+                $('#date').html(data);
+              }
+            });
+          }else {
+            $('#result').html('');
+          }
+        });
+      });
+    </script>
 </body>
 
 </html>

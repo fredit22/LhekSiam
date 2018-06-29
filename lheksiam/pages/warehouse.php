@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <?php include("../connect_db.php"); 
 ?>
@@ -582,7 +582,7 @@
    <input type="text" name="zonewarehouse" id="zonewarehouse" class="form-control" >          
 </div>
 <div class="col-md-2"> 
- <label>Maximumn Size</label>   
+ <label>Maximum Size</label>   
 </div>
 <div class="col-md-3"> 
  <a data-toggle="popover" data-placement="top" data-content="กรุณาระบุSize"  id="popoversize"></a> 
@@ -681,16 +681,10 @@
           success: function(data) {
               if (data == 0) {
 
-                alert('This ID is in the system');           
+                alert('This ID is in the Database');           
 
             }
-
-            if (data == 1) {
-
-                alert('Data Not Found');           
-
-            }
-
+            
         }
 
     });
